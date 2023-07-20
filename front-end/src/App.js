@@ -12,7 +12,7 @@ import Select from "./pages/Select/index";
 import Ready from "./pages/Ready/index";
 import Check from "./pages/Check/index";
 import Play from "./pages/Play/index";
-import Code from "./pages/Paint/index"
+import Code from "./pages/Code/index"
 import Paint from "./pages/Paint/index";
 ///////////////////////////////////
 
