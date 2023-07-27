@@ -1,9 +1,9 @@
-import "./index.css"
+import Wrapper from './styles';
 
 function Main() {
-  return <div>
+  return <Wrapper className='root'>
     <h1>Main</h1>
-  </div>;
+  </Wrapper>;
 }
 
 export default Main;
