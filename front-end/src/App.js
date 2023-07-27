@@ -2,72 +2,57 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 // CSS
 import "./App.css";
 import Main from "./pages/Main/index";
-import Signup from "./pages/Signup/index";
-import Login from "./pages/LogIn/index";
-import Id from "./pages/Inquiry/id";
-import Pw from "./pages/Inquiry/pw";
+import Password from "./pages/Password/index";
+import Connect from "./pages/Connect/index";
 import Guide from "./pages/Guide/index";
 import Books from "./pages/Books/index";
-import Select from "./pages/Select/index";
-import Ready from "./pages/Ready/index";
+import Print from "./pages/Print/index";
 import Check from "./pages/Check/index";
 import Play from "./pages/Play/index";
-import Code from "./pages/Code/index"
-import Paint from "./pages/Paint/index";
+import Profile from "./pages/Profile/index";
+import Code from "./pages/Code/index";
 ///////////////////////////////////
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <Main/>,
+    path: "/main",
+    element: <Main />,
   },
   {
-    path: "/signup",
-    element: <Signup/>,
+    path: "/password",
+    element: <Password />,
   },
   {
-    path: "/login",
-    element: <Login/>,
-  },
-  {
-    path: "/inquiry/id",
-    element: <Id/>,
-  },
-  {
-    path: "/inquiry/pw",
-    element: <Pw/>,
+    path: "/connect",
+    element: <Connect />,
   },
   {
     path: "/guide",
-    element: <Guide/>,
+    element: <Guide />,
   },
   {
     path: "/books",
-    element: <Books/>,
+    element: <Books />,
   },
   {
-    path: "/select",
-    element: <Select/>,
-  },
-  {
-    path: "/ready",
-    element: <Ready/>,
+    path: "/Print",
+    element: <Print />,
   },
   {
     path: "/check",
-    element: <Check/>,
+    element: <Check />,
   },
   {
     path: "/play",
-    element: <Play/>,
+    element: <Play />,
+  },
+  {
+    path: "/profile",
+    element: <Profile />,
   },
   {
     path: "/code",
-    element: <Code/>,
-  },
-  {
-    path: "/paint",
-    element: <Paint/>,
+    element: <Code />,
   },
 ]);
 
