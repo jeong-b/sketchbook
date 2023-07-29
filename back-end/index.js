@@ -4,36 +4,36 @@ const express = require("express");
 const app = express();
 const port = 5000;
 const bodyParser = require("body-parser");
-const mongoose = require("mongoose");
-const { User } = require("./models/User.js");
-require("dotenv").config();
 
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
 
-const dbAddress = process.env.DB_URL;
-console.log(dbAddress)
+const { db } = require("./module/db");
 
-mongoose
-  .connect(dbAddress, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndModify: false,
+db();
+
+app.get("/", (req, res) => res.send("안녕하세요!"));
+
+app.listen(port, () => console.log(`${port}번에 잘 접속했습니다.`));
+
+// 유저 API 생성
+const { User } = require("./models/User.js");
+
+app.use(
+  express.urlencoded({
+    extended: true,
   })
-  .then(() => console.log("데이터베이스가 연결되었습니다."))
-  .catch((err) => console.log(err));
-
-app.get("/", (req, res) => res.send("Hello World!"));
+);
+app.use(express.json());
 
 app.post("/register", (req, res) => {
-    // 회원가입을 할 때 필요
-    // post로 넘어온 데이터를 받아서 DB에 저장
-    const user = new User(req.body);
-    user.save((err, userInfo) => {
-        if (err) return res.json({ success: false, err});
-        return res.status(200).json({ success: true });
-    })
-})
-
-app.listen(port, () => console.log(`listening on port ${port}`));
+  // 회원가입할 때 필요한 정보들을
+  // client에서 가져오면 그것들을 db에 넣는다.
+  const user = new User(req.body);
+  // 정보 저장, 에러 시 json 형식으로 전달
+  user.save((err, userInfo) => {
+    if (err) return res.json({ success: false, err });
+    return res.status(200).json({
+      success: true,
+    });
+  });
+});
