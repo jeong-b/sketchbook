@@ -34,7 +34,7 @@ function Profile() {
       ...prevForm,
       newPw: currentNewPW
     }));
-    const newPwRegExp = /^[a-zA-z0-9]{8,20}$/;
+    const newPwRegExp =  /^[a-zA-Z0-9!@#$%^&*()-_=+{}[\]|\;:'",.<>/?]{8,20}$/;
 
     if (!newPwRegExp.test(currentNewPW) & currentNewPW !== "") {
       setForm((prevForm) => ({
