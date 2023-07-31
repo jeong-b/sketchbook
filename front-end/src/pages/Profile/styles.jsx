@@ -4,6 +4,8 @@ const Wrapper = styled.div`
 margin-top: 100px;
 display : flex;
 justify-content : space-evenly;
+font-family: 'Pretendard-Regular';
+
 
 .grid{
     width : 40%;

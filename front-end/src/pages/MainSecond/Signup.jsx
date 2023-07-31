@@ -159,7 +159,6 @@ export default function Login() {
 
           <button type="submit" className='start'>시작하기</button>
 
-          <p className="forgot-password"> <a href="/forgot-password">비밀번호 찾기</a></p>
         </form>
       </div>
     </Wrapper>
