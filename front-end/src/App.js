@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import "./App.css";
 
 import Main from "./pages/Main/index";
+import MainSecond from "./pages/MainSecond/index";
 import Connect from "./pages/Connect/index";
 import Guide from "./pages/Guide/index";
 import Books from "./pages/Books/index";
@@ -20,8 +21,12 @@ import NotFound from "./pages/NotFound/index";
 
 const router = createBrowserRouter([
   {
-    path: "/main",
+    path: "/main/login",
     element: <Main />,
+  },
+  {
+    path: "/main/signup",
+    element: <MainSecond />,
   },
   {
     path: "/connect",
