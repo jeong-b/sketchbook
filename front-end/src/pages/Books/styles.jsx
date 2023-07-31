@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
   justify-content: center;
   margin-top: 20px;
 
+
   .pagination {
     li {
       a {
@@ -34,6 +35,7 @@ export const Wrapper = styled.div`
 `;
 
 export const IconWrap = styled.div`
+font-family: 'Pretendard-Regular';
 
     svg {
 		color: #ffffff;

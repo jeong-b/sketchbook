@@ -4,6 +4,8 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   box-shadow: 0 1px 10px -5px black;
+  font-family: 'Pretendard-Regular';
+
 
   .logo{
     width:150px;

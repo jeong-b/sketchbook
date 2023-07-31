@@ -1,6 +1,9 @@
 import styled from "styled-components";
 
 const Wrapper = styled.div`
+
+font-family: 'Pretendard-Regular';
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,10 +23,10 @@ const Wrapper = styled.div`
   }
   
   .box {
-    margin: 100px;
+    margin: 30px;
     background-color: #f8f8f8;
     border-radius: 10px;
-    padding: 6% 13%;    
+    padding: 5% 11%;    
   }
   
   ol{
@@ -32,7 +35,7 @@ const Wrapper = styled.div`
 
   li {
     font-size: 25px;
-    line-height: 60px;
+    line-height: 50px;
   }
   
   .btndiv{

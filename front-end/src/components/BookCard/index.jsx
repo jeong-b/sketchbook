@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Card from 'react-bootstrap/Card';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
-import { Wrapper } from './styles';
+import { Wrapper, FontWrap } from './styles';
 
 function BookCard({ book }) {
   const [showModal, setShowModal] = useState(false);
@@ -17,12 +17,14 @@ function BookCard({ book }) {
 
   return (
     <>
+    <FontWrap>
         <Card style={{ width: '25rem', margin: '20px 0px 20px 0px'}} onClick={handleModalShow}>
           <Card.Img variant="top" src={book.bookcover} style={{ width: '24.9rem', height: '30rem' }} />
-          {/* <Card.Body>
-          <Card.Title style={{ textAlign: 'right' }}>{book.title}</Card.Title>
-        </Card.Body> */}
+          <Card.Body>
+          <Card.Title style={{ textAlign: 'center' }}>{book.title}</Card.Title>
+        </Card.Body>
         </Card>
+        </FontWrap>
 
         <Modal show={showModal} onHide={handleModalClose} size="xl">
           <Modal.Header closeButton>

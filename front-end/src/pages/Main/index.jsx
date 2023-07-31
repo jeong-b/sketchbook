@@ -1,25 +1,12 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import Login from './Login'
 import Wrapper from './styles';
 
 function Main() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const openModal = () => {
-    console.log('handleModal');
-    setIsModalOpen(true);
-  }
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  }
 
   return (
-    // <Wrapper className='root'>
-    //   <h1>Main</h1>
-    //   <span onClick={openModal}>test</span>
-    //   <PasswordModal closeModal={closeModal} isModalOpen={isModalOpen} />
-    // </Wrapper>
+
     <Wrapper>
       
       <div className="video-container">

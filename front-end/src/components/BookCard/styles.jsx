@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 
+
 export const Wrapper = styled.div`
+  font-family: 'Pretendard-Regular';
+
   display: flex;
 
   h2 {
@@ -24,3 +27,7 @@ export const Wrapper = styled.div`
     color: #ffffff;
   }
 `;
+
+export const FontWrap = styled.div`
+  font-family: 'Pretendard-Regular';
+  `
