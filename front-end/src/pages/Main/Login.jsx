@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Wrapper from "./styles";
 import PasswordModal from "../../components/PasswordModal";
 
 import axios from "axios";
 
 export default function Login() {
+  const navigate = useNavigate();
+
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => {
-    // console.log('handleModal');
     setIsModalOpen(true);
   };
 
@@ -53,7 +54,7 @@ export default function Login() {
 
   const login = (e) => {
     e.preventDefault();
-    // console.log(useremail);
+    
     axios
       .post("/api/users/login", {
         email: useremail,
@@ -61,6 +62,12 @@ export default function Login() {
       })
       .then((res) => {
         console.log(res.data);
+        if (res.data.loginSuccess==false){
+          alert('일치하는 회원정보가 없습니다.')
+          return
+        } else {
+        navigate('/books'); // 기기 연결 페이지로 이동하게 변경 예정
+        }
       })
       .catch((err) => {
         console.log(err);
