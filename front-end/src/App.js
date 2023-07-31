@@ -11,7 +11,6 @@ import MainSecond from "./pages/MainSecond/index";
 import Connect from "./pages/Connect/index";
 import Guide from "./pages/Guide/index";
 import Books from "./pages/Books/index";
-import Print from "./pages/Print/index";
 import Check from "./pages/Check/index";
 import Play from "./pages/Play/index";
 import Profile from "./pages/Profile/index";
@@ -39,10 +38,6 @@ const router = createBrowserRouter([
   {
     path: "/books",
     element: <Books />,
-  },
-  {
-    path: "/Print",
-    element: <Print />,
   },
   {
     path: "/check",
