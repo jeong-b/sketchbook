@@ -7,7 +7,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import "./App.css";
 
 import Main from "./pages/Main/index";
-import Password from "./pages/Password/index";
 import Connect from "./pages/Connect/index";
 import Guide from "./pages/Guide/index";
 import Books from "./pages/Books/index";
@@ -23,10 +22,6 @@ const router = createBrowserRouter([
   {
     path: "/main",
     element: <Main />,
-  },
-  {
-    path: "/password",
-    element: <Password />,
   },
   {
     path: "/connect",
