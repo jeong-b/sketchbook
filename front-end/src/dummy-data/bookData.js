@@ -25,7 +25,7 @@ const bookData = [
   {
     id: 3,
     bookcover: 'https://shopping-phinf.pstatic.net/main_3249617/32496176828.20221227205651.jpg',
-    title: '타다의 커다란 날개',
+    title: '타타의 커다란 날개',
     writer: '심명자',
     summary: `무대에서 돋보이고 싶어!
     

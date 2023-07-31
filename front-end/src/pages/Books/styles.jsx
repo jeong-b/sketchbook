@@ -8,16 +8,16 @@ export const Wrapper = styled.div`
   .pagination {
     li {
       a {
-        color: #5b9c90;
+        color: #9D4FE0;
         background-color: #ffffff;
-        border: 1px solid #5b9c90;
+        border: 1px solid #9D4FE0;
         margin: 2px;
         padding: 6px 12px;
         
 
         &:hover {
           color: #ffffff;
-          background-color: #5b9c90;
+          background-color: #9D4FE0;
           border-color: #ffffff;
         }
         
@@ -26,9 +26,17 @@ export const Wrapper = styled.div`
           }
     }
       span {
-        background-color: #5b9c90;
+        background-color: #9D4FE0;
         border: none;   
       }
     }
   }
+`;
+
+export const IconWrap = styled.div`
+
+    svg {
+		color: #ffffff;
+      	font-size: 30px;
+    }
 `;
