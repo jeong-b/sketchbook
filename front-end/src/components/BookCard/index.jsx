@@ -22,7 +22,14 @@ function BookCard({ book }) {
 
     // 창 페이지 구성
     const printContent = `
-            <style>
+    <style>
+            @media print {
+              .print-show { display:block;}
+              .print-hide {display:none;}
+              @page {size: A4 landscape;}
+              @page :first {margin:0 1.3cm}
+              html {margin:1.3cm 0;}
+}
               img { width: 100%; height: auto; page-break-after: always;}
             </style>
             <img src="${process.env.PUBLIC_URL}/assets/character.jpg" alt="Character">
@@ -32,7 +39,7 @@ function BookCard({ book }) {
 
     setTimeout(() => {
       printWindow.print();
-    }, 1);
+    }, 500);
   };
 
   return (
