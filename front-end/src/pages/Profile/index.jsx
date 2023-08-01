@@ -39,7 +39,7 @@ function Profile() {
     if (!newPwRegExp.test(currentNewPW) & currentNewPW !== "") {
       setForm((prevForm) => ({
         ...prevForm,
-        newPwMessage: "영어 대소문자 또는 숫자의 8~20자 사이의 비밀번호를 설정해주세요.",
+        newPwMessage: "영어 대/소문자, 숫자를 포함한 8~20자 이내로 설정해 주세요.",
       }));
     } else {
       setForm((prevForm) => ({

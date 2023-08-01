@@ -5,7 +5,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import Wrapper from "./styles";
 import axios from "axios";
 
-export default function Login() {
+export default function Signup() {
+
   const navigate = useNavigate();
 
   const [useremail, setUseremail] = useState("");
@@ -33,7 +34,7 @@ export default function Login() {
 
   const passwordCheck = (password) => {
     if (password.match(passwordRegEx) === null) {
-      setPasswordWarning('비밀번호 형식이 일치하지 않습니다.');
+      setPasswordWarning('영어 대/소문자, 숫자를 포함한 8~20자 이내로 설정해 주세요.');
     } else {
       setPasswordWarning('');
     }
@@ -97,7 +98,7 @@ export default function Login() {
 
   return (
     <Wrapper>
-      <div className="login">
+      <div className="signup">
         <div className="login-signup-buttons">
           <Link to="/main/login" style={{ textDecoration: "none", color: "gray" }}>
             <h3>로그인</h3>

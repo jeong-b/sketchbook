@@ -16,6 +16,7 @@ import Play from "./pages/Play/index";
 import Profile from "./pages/Profile/index";
 import Code from "./pages/Code/index";
 import NotFound from "./pages/NotFound/index";
+import MainThird from "./pages/MainThird/index";
 ///////////////////////////////////
 
 const router = createBrowserRouter([
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
   {
     path: "/main/signup",
     element: <MainSecond />,
+  },
+  {
+    path: "/main/choose",
+    element: <MainThird />,
   },
   {
     path: "/connect",
