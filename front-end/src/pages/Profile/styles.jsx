@@ -3,12 +3,12 @@ import styled from "styled-components";
 const Wrapper = styled.div`
 margin-top: 100px;
 display : flex;
-justify-content : space-evenly;
+justify-content : center;
 font-family: 'Pretendard-Regular';
 
 
 .grid{
-    width : 40%;
+    width : 500px;
 }
 
 img{
@@ -20,6 +20,7 @@ img{
     background-color: #F8F8F8;
     border-radius: 10px;
     padding: 50px;
+    margin-right: 50px;
   }
 
   input{
