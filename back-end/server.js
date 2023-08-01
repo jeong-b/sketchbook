@@ -2,7 +2,7 @@
 // OTP, 관절 포인트는 Redis를 사용
 
 const express = require("express");
-// const helmet = require("helmet");
+const helmet = require("helmet");
 // const cors = require("cors");
 const morgan = require("morgan");
 const dotenv = require("dotenv");
@@ -20,7 +20,7 @@ app.use(
 );
 // app.use(cors());
 app.use(morgan("tiny"));
-// app.use(helmet());
+app.use(helmet());
 
 
 /* PORT 지정 */

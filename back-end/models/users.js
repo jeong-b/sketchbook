@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 const cookieParser = require("cookie-parser");
-const jwt = require("jsonwebtoken")
+const jwt = require("jsonwebtoken");
 
 // 토큰을 쿠키에 저장하기 위해 사용
 app.use(cookieParser());
@@ -19,8 +19,8 @@ const userSchema = new mongoose.Schema(
     },
     password: {
       type: String,
-      maxLength: 20,
-      minLength: 8,
+      maxlength: 20,
+      minlength: 8,
       trim: true,
       required: true,
     },
@@ -61,7 +61,6 @@ userSchema.pre("save", function (next) {
   }
 });
 
-
 // 로그인 - 비밀번호를 비교
 userSchema.methods.comparePassword = function (plainPassword, cb) {
   // 입력된 비밀번호와 데이터베이스에 있는 암호화된 비밀번호가 같은지 확인
@@ -71,14 +70,16 @@ userSchema.methods.comparePassword = function (plainPassword, cb) {
   });
 };
 
+
 //로그인 - 토큰 생성
-userSchema.methods.generateToken = function (cb) {
+userSchema.methods.generateToken = function (plainPassword, cb) {
   var user = this;
   // JWT 토큰 생성
   var token = jwt.sign(user._id.toHexString(), "secretToken");
   // user._id + 'secretToken' = token 을 통해 토큰 생성
   // 토큰 해석을 위해 'secretToken' 입력 => user._id 가 나옴
   user.token = token;
+  user.password = plainPassword;
 
   user.save(function (err, user) {
     if (err) return cb(err);
@@ -97,7 +98,7 @@ userSchema.statics.findByToken = function(token, cb) {
       if (err) return cb(err)
       cb(null, user)
     })
-  })
+  })  
 }
 
 const User = mongoose.model("User", userSchema);
