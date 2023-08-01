@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import SoundWrapper from "../styles";
+import SoundWrapper from "./styles";
 
-const VoiceBar = () => {
+const SoundCheck = () => {
   const [audioStream, setAudioStream] = useState(null);
   const [volume, setVolume] = useState(0);
 
@@ -9,6 +9,7 @@ const VoiceBar = () => {
     console.log(audioStream);
     if (audioStream) {
       setAudioStream(null);
+      setVolume(0);
     } else {
       async function getMicrophone() {
         try {
@@ -59,27 +60,30 @@ const VoiceBar = () => {
     <SoundWrapper>
       <h2>4. 음성 인식 확인하기</h2>
       <div className="box">
-        <div
-          style={{
-            width: "200px",
-            height: "30px",
-            backgroundColor: "lightgray",
-          }}
-        >
+        <img
+          className="volume"
+          src={process.env.PUBLIC_URL + "/assets/volume.png"}
+        />
+        <div className="sound">
+          <img src={process.env.PUBLIC_URL + "/assets/sound.png"} alt="" />
           <div
+            className="gauge"
             style={{
               width: `${volume}px`,
-              height: "100%",
-              backgroundColor: "blue",
             }}
           />
+        <div className="button">
+          <button onClick={handleMicrophone}>
+            {audioStream ? "끄기" : "켜기"}
+          </button>
         </div>
-        <button onClick={handleMicrophone}>
-          {audioStream ? "마이크 끄기" : "마이크 켜기"}
-        </button>
+        </div>
       </div>
+      <h4>
+        "출발"이라고 외쳐 보세요!
+      </h4>
     </SoundWrapper>
   );
 };
 
-export default VoiceBar;
+export default SoundCheck;

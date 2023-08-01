@@ -20,7 +20,6 @@ const Wrapper = styled.div`
 
   .box{
     border : 1px solid black;
-    padding : 10px;
     display: flex;
     height : 600px;
     border-radius: 10px;
