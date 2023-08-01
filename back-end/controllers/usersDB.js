@@ -14,6 +14,22 @@ function register(req, res) {
   });
 }
 
+function idCheck(req, res) {
+  User.findOne({ email: req.body.email }, (err, user) => {
+    if (user) {
+      return res.json({
+        registerService: false,
+        message: "중복된 이메일이 있습니다."
+      })
+    } else {
+      return res.json({
+        registerService: true,
+        message: "이메일을 사용할 수 있습니다."
+      })
+    }
+  })
+}
+
 function login(req, res) {
   // 요청된 이메일을 데이터베이스에서 있는지 찾는다
   User.findOne({ email: req.body.email }, (err, user) => {
@@ -75,6 +91,7 @@ function logout(req, res) {
 }
 
 exports.register = register;
+exports.idCheck = idCheck;
 exports.login = login;
 exports.auth = auth;
 exports.logout = logout;
