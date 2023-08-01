@@ -27,7 +27,7 @@ import MainThird from "./pages/MainThird/index";
 
 const router = createBrowserRouter([
   {
-    path: "/main/login",
+    path: "/",
     element: <Main />,
   },
   {

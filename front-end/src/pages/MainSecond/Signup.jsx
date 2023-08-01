@@ -6,7 +6,6 @@ import Wrapper from "./styles";
 import axios from "axios";
 
 export default function Signup() {
-
   const navigate = useNavigate();
 
   const [useremail, setUseremail] = useState("");
@@ -18,6 +17,8 @@ export default function Signup() {
   const [confirmPasswordWarning, setConfirmPasswordWarning] = useState(""); //패스워드일치검사
   const [showPassword, setShowPassword] = useState(false); //패스워드 보여줘?
   const [showConfirmPassword, setShowConfirmPassword] = useState(false); //패스워드 확인 보여줘?
+  const [isValidEmail, setIsValidEmail] = useState(false); // 이메일 유효성 검사 결과
+  
 
   const emailRegEx = /^[A-Za-z0-9]([-_.]?[A-Za-z0-9])*@[A-Za-z0-9]([-_.]?[A-Za-z0-9])*\.[A-Za-z]{2,3}$/i;
   const passwordRegEx = /^[a-zA-Z0-9!@#$%^&*()\-_=+{}[\]|\\;:'",.<>/?]{8,20}$/;
@@ -29,7 +30,7 @@ export default function Signup() {
     } else {
       setWarning('');
     }
-    return isValidEmail;
+    setIsValidEmail(isValidEmail); // 이메일 유효성 검사 결과 설정
   };
 
   const passwordCheck = (password) => {
@@ -60,10 +61,22 @@ export default function Signup() {
     setVerificationCode(e.target.value);
   };
 
-  const handleDuplicateCheck = () => {
-    // 이메일 중복확인 로직
-    // setEmailDuplicate(true); // 중복된 이메일인 경우
-    // setEmailDuplicate(false); // 중복되지 않은 이메일인 경우
+  const handleDuplicateCheck = (e) => {
+    e.preventDefault(); // 새로고침 방지
+    axios.post("/api/users/idCheck", { email: useremail })
+      .then((res) => {
+        console.log(res.data)
+        const { registerService, message } = res.data;
+        if (registerService) {
+          alert(message); // 이메일 사용 가능
+        } else {
+          alert(message); // 이메일 중복
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        alert("이메일 중복 확인에 실패했습니다.");
+      });
   };
 
   const handleVerifyCode = () => {
@@ -77,30 +90,39 @@ export default function Signup() {
 
     if (password !== confirmPassword) {
       setConfirmPasswordWarning('비밀번호가 일치하지 않습니다.');
-      alert("비밀번호가 일치하지 않습니다.")
+      alert("비밀번호가 일치하지 않습니다.");
       return;
-    } else {
-      alert("회원가입 성공")
-      navigate('/main/login');
+    } else if (!isValidEmail) {
+      alert("이메일 형식을 확인해주세요")
+      return;
     }
+
     axios
       .post("/api/users/register", {
         email: useremail,
         password: password,
       })
       .then((res) => {
-        console.log(res.data)
+        if (res.data.success==false){
+          alert('잘못된 회원 정보입니다.')
+          console.log(res)
+          return
+        } else {
+        navigate('/');
+        console.log(res.data);
+        }
       })
       .catch((err) => {
         console.log(err);
-      })
-  }
+        alert("회원가입에 실패하였습니다. 다시 시도해주세요.");
+      });
+  };
 
   return (
     <Wrapper>
       <div className="signup">
         <div className="login-signup-buttons">
-          <Link to="/main/login" style={{ textDecoration: "none", color: "gray" }}>
+          <Link to="/" style={{ textDecoration: "none", color: "gray" }}>
             <h3>로그인</h3>
           </Link>
           <Link to="/main/signup" style={{ textDecoration: "none", color: "gray" }}>

@@ -28,7 +28,7 @@ function idCheck(req, res) {
     } else {
       return res.json({
         registerService: true,
-        message: "이메일을 사용할 수 있습니다."
+        message: "사용 가능한 이메일입니다."
       })
     }
   })
