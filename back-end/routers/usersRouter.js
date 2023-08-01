@@ -8,7 +8,6 @@ usersRouter.use(bodyParser.urlencoded({ extended: true }));
 usersRouter.use(cookieParser());
 
 const UsersDB = require("../controllers/usersDB.js");
-const { Auth } = require("../middlewares/auth.js");
 
 usersRouter.route('/register').post(UsersDB.register);
 usersRouter.route('/login').post(UsersDB.login);
