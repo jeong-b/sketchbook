@@ -14,5 +14,6 @@ usersRouter.route('/idCheck').post(UsersDB.idCheck);
 usersRouter.route('/login').post(UsersDB.login);
 usersRouter.route('/auth').get(UsersDB.auth);
 usersRouter.route('/logout').get(UsersDB.logout);
+usersRouter.route('/mail').post(UsersDB.mail);
 
 module.exports = usersRouter;
