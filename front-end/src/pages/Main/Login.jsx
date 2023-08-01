@@ -54,7 +54,12 @@ export default function Login() {
 
   const login = (e) => {
     e.preventDefault();
+<<<<<<< HEAD
+    console.log(useremail);
+    console.log(password);
+=======
     
+>>>>>>> 1ed2a2f14a7fae16fda8e14e2299ccfb40112a9b
     axios
       .post("/api/users/login", {
         email: useremail,
