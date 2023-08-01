@@ -1,5 +1,9 @@
 const { User } = require("../models/users.js");
 const { Auth } = require("../middlewares/auth.js");
+const { smtpTransport } = require("../config/email.js")
+const ejs = require('ejs')
+const path = require('path')
+var appDir = path.dirname(require.main.filename)
 
 function register(req, res) {
   // 회원가입할 때 필요한 정보들을
@@ -90,8 +94,48 @@ function logout(req, res) {
   });
 }
 
+function mail(req, res) {
+  /* min ~ max 까지 랜덤으로 숫자를 생성하는 함수 */
+  var generateRandom = function (min, max) {
+    var ranNum = Math.floor(Math.random()*(max-min+1)) + min
+    return ranNum
+  }
+
+  var number = generateRandom(111111, 999999)
+
+  ejs.renderFile(appDir + '/templates/authMail.ejs', {authCode: number}, function (err, data) {
+    if(err) {
+      console.log(err)
+    }
+    emailTemplate = data
+  })
+
+
+  // console.log(req.body.email)
+
+  let mailOptions = {
+    from: "3BTI: 스케치북, 아이의 상상은 현실이 된다.",
+    to: req.body.email,
+    subject: "회원가입을 위한 인증번호를 입력해주세요.",
+    html: emailTemplate
+  }
+
+  smtpTransport.sendMail(mailOptions, function (error, info) {
+    if (error) {
+      console.log(error)
+    }
+      console.log("메일이 무사히 전송되었습니다.")
+      res.json({
+        message: "메일이 무사히 전송되었습니다."
+      })
+      smtpTransport.close()
+    })
+
+}
+
 exports.register = register;
 exports.idCheck = idCheck;
 exports.login = login;
 exports.auth = auth;
 exports.logout = logout;
+exports.mail = mail;
