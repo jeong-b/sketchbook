@@ -1,7 +1,15 @@
+import { Outlet } from "react-router-dom";
+import Wrapper from "./styles";
+
 function Check() {
-  return <div>
-    <h1>Check</h1>
-  </div>;
+  return (
+    <Wrapper>
+      <div className="container">
+        <h1>시작하기 전, 확인해주세요!</h1>
+        <Outlet />
+      </div>
+    </Wrapper>
+  );
 }
 
 export default Check;
