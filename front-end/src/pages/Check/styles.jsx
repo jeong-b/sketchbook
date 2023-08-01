@@ -1,11 +1,13 @@
 import styled from "styled-components";
 
 const Wrapper = styled.div`
+font-family: 'Pretendard-Regular';
+
   text-align: center;
   margin : 0 auto;
 
   .container {
-    padding: 100px;
+    padding: 50px;
   }
 
   h1 {
@@ -15,12 +17,12 @@ const Wrapper = styled.div`
 
   h2 {
     font-weight: bold;
-    margin: 50px;
   }
 
   .box{
     border : 1px solid black;
-    display: flex;
+    padding : 10px;
+    // display: flex;
     height : 600px;
     border-radius: 10px;
     border : 1px solid black;
